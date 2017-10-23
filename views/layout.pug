@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title= `${title} | ${h.siteName}`
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Playfair+Display|Pontano+Sans")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  header.header
+    .title
+      a(href="/")
+        h2 #{h.siteName}
+    ul.nav
+      li.nav-list 
+        a(href="/") Home
+      li.nav-list
+        a(href="/add") Add students
+      li.nav-list
+        a(href="/addResource") Add Resource
+      li.nav-list
+        a(href="/departments") Departments
+      li.nav-list
+        a(href="/levels") Levels
+      if user
+        li.nav-list
+          a(href="/logout") Logout
+      else 
+        li.nav-list
+          a(href='/login') Log in
+        li.nav-list
+          a(href="/register") Register
+  body
+    block messages
+      if locals.flashes
+        - const categories = Object.keys(locals.flashes)
+        each category in categories
+          each message in flashes[category]
+            .flash(class=`flash_${category}`)
+              p!= message
+    block content
+
+    block scripts
+      script(src="/dist/App.bundle.js")

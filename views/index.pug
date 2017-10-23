@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .heading
+    h2 #{title}
+    h3 Go to
+  .main
+    ul.list_view
+      li.list_view-card
+        a(href="/resources")
+          i(class='fa fa-book')
+          p RESOURCES
+      li.list_view-card
+        a(href="/students") 
+          i(class='fa fa-group')
+          p STUDENTS

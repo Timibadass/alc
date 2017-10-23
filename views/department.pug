@@ -1,0 +1,15 @@
+extends layout
+
+include mixins/studentCard
+
+block content
+  h2= title
+  ul
+    each d in department
+      li
+        a(href=`/departments/${d._id}`)= d._id
+        span (#{d.count})
+  .students  
+    each student in students
+      .card
+        +studentCard(student)

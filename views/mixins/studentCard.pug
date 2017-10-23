@@ -1,0 +1,11 @@
+mixin studentCard( student= {})
+  .editStudent
+    if user && student.author.equals(user._id)
+      a(href=`/students/${student._id}/edit`)
+        != h.icon('pencil')
+  img.profile_picture(src=`/uploads/student/${student.photo || 'student.jpg'}`, alt="")
+  h2
+    a(href=`/students/${student.slug}`) #{student.name}
+  if user && student.author.equals(user._id)
+    h3
+      a(href=`/students/${student.slug}/delete`) Delete

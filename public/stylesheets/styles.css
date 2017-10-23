@@ -1,0 +1,300 @@
+/************* 
+  BODY
+********/
+
+body {
+    font-family: 'Pontano Sans', sans-serif;
+    background-color: #F0EBEB;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    color: #000;
+    height: 100%;
+}
+/***************
+ HEADER
+**************/
+
+.header {
+    width: 100%;
+    background-color: #000;
+    height: 50px;
+    position: relative;
+    top: 0;
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/**************
+ALC LOGO
+******************/
+.title {
+    color: #fff; 
+    display: block;
+    width: 10%;
+    height: 100%;
+    text-align: center;
+    margin: 0px 10px 0 10px;
+}
+.title:hover {
+    color: #CABBBB;
+}
+
+/*************
+ NAVIGATION
+**************/
+.nav {
+    list-style-type: none;
+    width: 60%;
+    margin: 0 -3px 0 10px;
+    height: 100%;
+    display: inline-block;
+}
+
+/**************
+NAVIGATION LIST
+***********************/
+.nav-list {
+    float: left;
+    width: 12%;
+    border: 1px dashed #998650;
+    padding: 15px 5px;
+    height: 30%;
+    text-align: center;
+    background-color:  #15A0BF;
+}
+
+.nav-list:hover {
+    background-color: #fff;
+    color: #000;
+    border: 0;
+    height: 31%;
+}
+
+/**********
+ MAIN BODY
+***************/
+.main {
+    width: 90%;
+    display: block;
+    margin: auto;
+    padding: 30px;
+}
+
+/*********
+ TOPIC
+***************/
+.heading {
+    width: auto;
+    text-align: center;
+    height: 10%;
+    display: block;
+    margin: auto;
+}
+
+/**************
+ LIST VIEW CONTAINER
+**********************/
+.list_view {
+  width: 80%;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: #000;
+}
+
+/**************
+ LIST VIEW CARD
+******************/
+.list_view-card {
+    width: 30%;
+    box-shadow: 5px 5px 25px 5px #000;
+    background-color: #E0BE36;
+    border-radius: 20%;
+    height: 250px;
+}
+
+.list_view-card a {
+    font-size: 30px;
+    width: 20%;
+    display: block;
+    margin: auto 70px;
+}
+
+.list_view-card i {
+    font-size: 80px;
+    width: 35%;
+    padding: auto;
+    display: block;
+    margin: 50px auto;
+}
+/*********
+ ALL H2 ELEMENTS
+*********/
+h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/****************
+  LINKS
+**************/
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/**************
+  
+ STUDENT'S PROFILE PICTURE
+
+*****************/ 
+.profile_picture {
+    width: 80%;
+    border-radius: 100%;
+    max-width: 200px;
+    margin-top: 10px;
+    height: 200px;
+}
+
+/***********
+ FLASHES
+***********/
+
+/***SUCCESS ***/
+.flash_success {
+    background-color: #fff;
+    color: #000;
+    height: auto;
+    width: 50%;
+    text-align: center;
+    border: 3px solid green;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius:20px;;
+}
+
+/******ERROR **********/
+.flash_error {
+    background-color: #000;
+    color: #fff;
+    height: auto;
+    width: 50%;
+    text-align: center;
+    border: 3px solid red;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+/*********** WARNING **************/
+.flash_warning {
+    background-color: #000;
+    color: #fff;
+    height: auto;
+    width: 50%;
+    text-align: center;
+    border: 3px solid yellow;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+/************ INFO **********/
+.flash_info {
+    background-color: #000;
+    color: #fff;
+    height: auto;
+    width: 50%;
+    text-align: center;
+    border: 3px solid orangered;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+/************
+  PROFILE PHOTO IN FORM
+***************/
+.profile_photo {
+    width: 300px;
+    height: 250px;
+}
+
+/*********
+ STUDENTS DIV
+************/
+.students {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/***************
+ EDIT STUDENT BUTTON
+***************/
+.editStudent {
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: auto;
+}
+
+/***************
+  STUDENT  PROFILE CARD
+***************************/
+.card {
+    width: 300px;    
+    height: 350px;
+    padding: 5px;
+    margin: 10px 0;
+    text-align: center;
+    box-shadow: 2px 2px 5px 2px #000;
+}
+
+/*****************
+  FORMS
+******************/
+.form {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 50px;
+    background-color: #DDDDDD;
+    color: #000;
+    height: 100%;
+    text-align: center;
+}
+
+/**********
+ LABEL
+********************/
+label {
+    display: block;
+    font-size: 20px;
+}
+
+/******************
+ INPUT TYPE
+**********************/
+input[type='text'], input[type='email'], input[type='password'], input[type='submit'] {
+    width: 60%;
+    margin: 20px;
+    height: 40px;
+}
+
+/*********************
+ INPUT TYPE RADIO
+*************************/
+input[type='radio'] {
+    width: 50%;
+    border: 1px solid red;
+}

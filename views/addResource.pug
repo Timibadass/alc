@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+  h2= title
+
+  form.form(action="/addResource" method='POST' enctype='multipart/form-data')
+    label(for="Resource title") Resource name
+    input(type="text" name='title') 
+    label(for="resource course") Course
+    - const choices = ['Mts 100', 'Mts 200', 'Mts 300','Mts 400','Mts 500','GNS 100', 'GNS 200', 'GNS 300', 'GNS 400','GNS 500', 'PHS 100', 'PHS 200', 'PHS 300', 'PHS 400', 'PHS 500','CHM 100', 'CHM 200', 'CHM 300', 'CHM 400', 'CHM 500']
+    ul
+      select(name="course")
+        each choice in choices
+          option(value=choice) #{choice}
+    label(for="level") Level
+    - const levels = ['100l', '200l', '300l', '400l', '500l']
+    ul
+      select(name="level")
+        each level in levels
+          option(value=level) #{level}
+    label(for="resource") Upload Resource
+    input(type="file" name='resource' id='resource' accept='application/pdf')
+    input(type="submit" value='add')

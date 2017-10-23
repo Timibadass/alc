@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  img.profile_photo(src=`/uploads/${student.photo || 'student.png'}`, alt="")
+  h2
+    a(href=`/students/${student.slug}`)= student.name
+  h4 Level
+  p= student.level
+  h4 Department
+  p= student.department
+  h4 Age
+  p= student.age
+  h4 Courses
+  if student.courses
+    ul
+      each course in student.courses
+        li
+          a(href=`/courses/${course}`)= course	

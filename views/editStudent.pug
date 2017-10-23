@@ -1,0 +1,7 @@
+extends layout
+
+include mixins/studentForm
+
+block content
+  h2= title
+  +studentForm(student)
