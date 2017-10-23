@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  img.profile_photo(src=`/uploads/${student.photo || 'student.png'}`, alt="")
+  img.profile_photo(src=`/uploads/student/${student.photo || 'student.png'}`, alt="")
   h2
     a(href=`/students/${student.slug}`)= student.name
   h4 Level
