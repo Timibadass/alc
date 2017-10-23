@@ -37,7 +37,7 @@ mixin studentForm( student = {})
             input(type="checkbox" id=choice value=choice name='courses' checked=(courses.includes(choice)))
             label(for=choice) #{choice}
         label(for="photo") Photo
-        input(type="file" name='photo' accept='image/png, image/jpeg' value=student.photo)
+        input(type="file" name='photo' accept='image/png, image/jpeg')
         if student.photo
-            img.profile_photo(src=`/uploads/${student.photo}`, alt=student.name)
+            img.profile_photo(src=`/uploads/student/${student.photo}`, alt=student.name)
         input(type="submit" value='Save Student')
