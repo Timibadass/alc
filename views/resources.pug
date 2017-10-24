@@ -3,21 +3,10 @@ extends layout
 block content
   .heading
     h2= title
-    h3 select a course
   .main 
-    ul
+    ul.resources
       each course in courses
-        li
+        li.resources-grid
           a(href=`/resources/${course._id}`)= course._id
-          span (#{course.count})
-          i(class='fa fa-book')
-    ul
-      each resource in resources
-        li
-          a(href=`/resources/view/${resource.slug}`) Open #{resource.title}
-        li
-          a(href=`/resources/${resource.slug}/download`)
-            i(class='fa fa-download')
-        h3 Level: #{resource.level}
-
+          span ( #{course.count} Resources)
   

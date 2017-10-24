@@ -3,12 +3,8 @@ extends layout
 include mixins/studentCard
 
 block content
-  h2 #{levels} Level
-  ul
-    each l in level
-      li
-        a(href=`/levels/${l._id}`)= l._id
-        span (#{l.count})
+  .heading
+    h3= title
   .students  
     each student in students
       .card

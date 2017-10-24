@@ -90,7 +90,15 @@ exports.getStudentsByLevel = async (req, res) => {
     const levelsPromise = Student.getLevels();
     const studentPromise = Student.find({level: levels});
     const [level, students] = await Promise.all([levelsPromise, studentPromise]);
-    res.render('level', {level, title: 'Levels', levels, students});
+    res.render('levels', {level, title: 'Levels', levels, students});
+}
+
+exports.displaySudentsInLevel = async (req, res) => {
+    const levels = req.params.level;
+    const levelsPromise = Student.getLevels();
+    const studentPromise = Student.find({level: levels});
+    const [level, students] = await Promise.all([levelsPromise, studentPromise]);
+    res.render('level', {level, title: `${levels} Levels`, levels, students});
 }
 
 exports.getStudentsByDepartment = async (req, res) => {
@@ -98,7 +106,15 @@ exports.getStudentsByDepartment = async (req, res) => {
     const departmentPromise = Student.getDepartments();
     const studentPromise = Student.find({department: departments});
     const [department, students] = await Promise.all([departmentPromise, studentPromise]);
-    res.render('department', {department, title: 'Departments', departments, students});
+    res.render('departments', {department, title: 'Departments', departments, students});
+}
+
+exports.displaySudentsInDepartment = async (req, res) => {
+    const department = req.params.department;
+    const departmentPromise = Student.getDepartments();
+    const studentPromise = Student.find({department: department});
+    const [departments, students] = await Promise.all([departmentPromise, studentPromise]);
+    res.render('department', {department, title: ` ${department} Department`, departments, students});
 }
 
 exports.deleteStudent = async (req, res, next) => {

@@ -35,6 +35,14 @@ exports.resourceHomepage = async (req, res) => {
     res.render('resources', {course, title: 'Resources', courses, resources});
 }
 
+exports.courseResource = async (req, res) => {
+    const course = req.params.course;
+    const coursePromise = Resource.getCourses();
+    const ResourcePromise = Resource.find({course: course});
+    const [courses, resources] = await Promise.all([coursePromise, ResourcePromise]);
+    res.render('resource', {course, title: ` ${course} Resources`, courses, resources});
+}
+
 exports.addResource = (req, res) => {
     res.render('addResource', {title: 'Add resource'})
 };

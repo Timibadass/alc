@@ -1,0 +1,11 @@
+extends layout
+
+include mixins/studentCard
+
+block content
+  h2= title
+  ul.resources
+    each d in department
+      li.resources-grid
+        a(href=`/departments/${d._id}`)= d._id
+        span  (#{d.count} students)

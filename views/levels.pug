@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  .heading
+    h3= title
+  ul.resources
+    each l in level
+      li.resources-grid
+        a(href=`/levels/${l._id}`)= l._id
+        span  (#{l.count} students)
+  

@@ -32,8 +32,7 @@ router.post('/addResource',
 );
 
 router.get('/resources', catchErrors(resourceController.resourceHomepage));
-
-router.get('/resources/:course', catchErrors(resourceController.resourceHomepage));
+router.get('/resources/:course', catchErrors(resourceController.courseResource));
 
 router.get('/resources/view/:slug', catchErrors(resourceController.viewResource));
 
@@ -44,10 +43,10 @@ router.get('/students/:id/edit', catchErrors(studentController.editStudent));
 router.get('/students/:slug', catchErrors(studentController.viewStudent));
 
 router.get('/levels', catchErrors(studentController.getStudentsByLevel));
-router.get('/levels/:level', catchErrors(studentController.getStudentsByLevel));
+router.get('/levels/:level', catchErrors(studentController.displaySudentsInLevel));
 
 router.get('/departments', catchErrors(studentController.getStudentsByDepartment));
-router.get('/departments/:department', catchErrors(studentController.getStudentsByDepartment));
+router.get('/departments/:department', catchErrors(studentController.displaySudentsInDepartment));
 
 router.get('/login', staffController.loginForm);
 router.post('/login', authController.login);

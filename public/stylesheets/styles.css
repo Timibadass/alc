@@ -298,3 +298,40 @@ input[type='radio'] {
     width: 50%;
     border: 1px solid red;
 }
+
+/******************
+ RESOURCES PAGE
+**************************/
+.resources {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    width: 80%;
+    height: 100%;
+}
+
+/********
+ RESOURCE LIST
+****************/
+.resources-grid {
+    text-align: center;
+    padding: 30px;
+    width: 20%;
+    height: 100%;
+    background-color: #fff;
+    color: #000;
+    margin: 20px;
+}
+
+/*******
+ BUTTONS
+***************/
+.button {
+    width: 40%;
+    height: 30px;
+    background-color: #15A0BF;
+    border: none;
+    margin: 5px;
+}
