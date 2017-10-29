@@ -1,14 +1,15 @@
 extends layout
 
 block content
-  h2= title
+  .heading
+    h2= title
   form.form(action="/register" method='POST')
     label(for="name") Name
-    input(type="text" name='name')
+    input(type="text" id='name' name='name')
     label(for="email") Email Address
-    input(type="email" name='email' )
+    input(type="email" id='email' name='email' )
     label(for="password") Password
-    input(type="password" name="password")
+    input(type="password" id='password' name="password")
     label(for="confirm-password") Confirm  Password
-    input(type="password" name="confirm-password")
+    input(type="password" id='confirm-password' name="confirm-password")
     input(type="submit" value='Register')

@@ -12,6 +12,13 @@ $(function(){
         $('.mobile_nav-button').show();
         $('.mobile_nav-div').slideUp(500);
     }).stop(true);
+
+
+    /***********TO CLOSE TO FLASH MESSAGS */
+
+    $('.flash_button-close').click(() => {
+        $('.flash_button-close').parent().hide();
+    })
     
 });
 

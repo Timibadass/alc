@@ -1,5 +1,5 @@
 doctype html
-html
+html(lang='en-us')
   head
     title= `${title} | ${h.siteName}`
     link(rel='stylesheet', href='/stylesheets/styles.css')
@@ -12,25 +12,6 @@ html
         .title
           a(href="/")
             h2 #{h.siteName}
-        ul.nav
-          li.nav-list 
-            a(href="/") Home
-          li.nav-list
-            a(href="/add") Add students
-          li.nav-list
-            a(href="/addResource") Add Resource
-          li.nav-list
-            a(href="/departments") Departments
-          li.nav-list
-            a(href="/levels") Levels
-          if user
-            li.nav-list
-              a(href="/logout") Logout
-          else 
-            li.nav-list
-              a(href='/login') Log in
-            li.nav-list
-              a(href="/register") Register
         button.mobile_nav-button
           i(class= 'fa fa-navicon')
         button.mobile_nav-button_close
@@ -60,14 +41,17 @@ html
         - const categories = Object.keys(locals.flashes)
         each category in categories
           each message in flashes[category]
-            .flash(class=`flash_${category}`)
+            div(class=`flash_${category}`)
+              button.flash_button-close
+                i(class='fa fa-close')
               p!= message
-    block content
-
+    .main
+      block content
   footer
     block footer
       h3 Made with 
-        i(class='fa fa-heart')  by Timi Omoyeni
+        i(class='fa fa-heart')  
+        |  by Timi Omoyeni
 
     block scripts
       script(src="/javascripts/jquery.js")

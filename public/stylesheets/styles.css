@@ -4,15 +4,15 @@
 
 html {
     font-family: 'Pontano Sans', sans-serif;
-    background-image: url(../images/card-background.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
+    background-color: #fff;
     color: #000;
     margin: 0;
-    height: 100%;
+    height: auto;
 }
 
+body {
+    margin: 0;
+}
 
 /***************
  HEADER
@@ -21,13 +21,11 @@ html {
     width: 100%;
     padding: 0;
     margin: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
     background-color: #fff;
     height: 50px;
     display: flex;
     margin: 0;
+    box-shadow: 0 5px 10px #000; 
     flex-direction: row;
     justify-content: space-between;
 }
@@ -38,25 +36,29 @@ ALC LOGO
     color: #fff; 
     display: block;
     width: auto;
-    height: 100%;
+    height: 70%;
+    padding: 0;
     text-align: center;
-    margin: 0px 10px 0 10px;
+    margin: 10px auto;
+}
+
+.title h2 {
+    margin: 0;
 }
 .title:hover {
     color: #CABBBB;
 }
 
-/*************
- NAVIGATION
-**************/
-.nav {
-    list-style-type: none;
-    width: 60%;
-    margin: 0 -3px 0 10px;
-    height: 100%;
-    display: none;
+/**************
+NAVIGATION LIST
+***********************/
+.nav-list {
+float: left;
+width: 12%;
+padding: 15px 5px;
+height: 30%;
+text-align: center;
 }
-
 /************
  mobile navbar
 ********************/
@@ -92,6 +94,7 @@ ALC LOGO
     position: absolute;
     top: 50px;
     left: 0;
+    margin: 0;
     padding: 0;
     background-color: grey;
     color: #F0EBEB;
@@ -100,6 +103,7 @@ ALC LOGO
 } 
 
 .mobile_nav-div ul {
+    text-align: left;
     list-style-type: none;
 }
 
@@ -113,18 +117,6 @@ ALC LOGO
     color: #000;
 }
 
-/**************
-NAVIGATION LIST
-***********************/
-.nav-list {
-    float: left;
-    width: 12%;
-    border: 1px dashed #998650;
-    padding: 15px 5px;
-    height: 30%;
-    text-align: center;
-    background-color:  #15A0BF;
-}
 
 .nav-list:hover {
     background-color: #fff;
@@ -137,9 +129,13 @@ NAVIGATION LIST
  MAIN BODY
 ***************/
 .main {
-    width: 88%;
+    width: 87%;
     display: block;
-    margin: auto;
+    background-color: #fff7c0;
+    box-shadow: 10px 5px 50px #000;
+    height: 100%;
+    margin: 20px auto;
+    border-radius: 20px;
     padding: 20px;
 }
 
@@ -148,10 +144,11 @@ NAVIGATION LIST
 ***************/
 .heading {
     width: auto;
+    font-size: 13px;
     text-align: center;
     height: 10%;
     display: block;
-    margin: 80px auto auto auto;
+    margin: 20px auto auto auto;
 }
 
 /**************
@@ -160,14 +157,14 @@ NAVIGATION LIST
 .list_view {
   width: 100%;
   margin: auto;
-  height: 100%;
+  height: 250px;
   padding: 0;
   display: flex;
   list-style-type: none;
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
-  color: #fff;
+  color: #000;
 }
 
 /**************
@@ -176,10 +173,10 @@ NAVIGATION LIST
 .list_view-card {
     width: 40%;
     margin: auto;
-    box-shadow: 5px 5px 25px 5px #000;
-    background-color: #000;
-    border-radius: 20%;
+    box-shadow: 5px 10px 25px #3c3c3c;
+    background-color: #f2EEe2;
     height: 80px;
+    border-radius: 20px;
 }
 
 .list_view-card a {
@@ -207,7 +204,9 @@ h2 {
     font-family: 'Playfair Display', serif;
     color: #76323F
 }
-
+/*******
+ ALL LISTS
+***************/
 ul {
     list-style-type: none;
 }
@@ -235,7 +234,21 @@ a {
 
 /***********
  FLASHES
-***********/
+******************/
+
+/************
+ BUTTON
+***************/
+.flash_button-close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    border: none;
+    font-size: 18px;
+    font-weight: normal;
+    background-color: transparent;
+    color:#fff;
+};
 
 /***SUCCESS ***/
 .flash_success {
@@ -247,7 +260,8 @@ a {
     border: 3px solid green;
     margin: 20px auto;
     padding: 0;
-    border-radius:20px;;
+    border-radius:20px;
+    position: relative;
 }
 
 /******ERROR **********/
@@ -257,6 +271,7 @@ a {
     height: auto;
     width: 98%;
     text-align: center;
+    position: relative;
     border: 3px solid red;
     margin: 20px auto;
     padding: 0;
@@ -270,6 +285,7 @@ a {
     height: auto;
     width: 98%;
     text-align: center;
+    position: relative;
     border: 3px solid yellow;
     margin: 20px auto;
     padding: 0;
@@ -280,6 +296,7 @@ a {
 .flash_info {
     background-color: #000;
     color: #fff;
+    position: relative;
     height: auto;
     width: 98%;
     text-align: center;
@@ -385,36 +402,41 @@ a {
 
 /*****************
   FORMS
-******************/
-.form {
-    width: 100%;
-    margin: auto;
-    margin-bottom: 50px;
-    background-color: #DDDDDD;
-    color: #000;
-    height: 100%;
-    text-align: center;
+  ******************/
+  .form {
+      width: 90%;
+      padding: 10px;
+      margin: auto;
+      font-family: 'Pontano Sans', sans-serif;
+      margin-bottom: 50px;
+      background-color: #DDDDDD;
+      color: #000;
+      height: 100%;
+      text-align: center;
 }
 
 /**********
  LABEL
 ********************/
 label {
+    font-family: 'Pontano Sans', sans-serif;
     font-size: 20px;
 }
 
 /******************
- INPUT TYPE
+INPUT TYPE
 **********************/
 input[type='text'], input[type='email'], input[type='password'], input[type='submit'] {
     width: 90%;
+    border: 1px solid #000;
     margin: 20px;
     height: 40px;
 }
 
 input[type='submit'] {
-    background-color: skyblue;
-    border: none;
+    font-family: 'Pontano Sans', sans-serif;
+    background-color: #4484cE;
+    border: 1px solid #000;
     font-size: 20px;
     font-weight: 200;
 }
@@ -469,7 +491,7 @@ input[type='radio'] {
 .button {
     width: 40%;
     height: 30px;
-    background-color: #15A0BF;
+    background-color: #286DA8;
     border: none;
     margin: 5px;
 }
@@ -480,9 +502,68 @@ input[type='radio'] {
 ************************/
  footer {
      color: #000;
-     width: 93.5%;
-     margin: 0;
+     width: 80%;
+     margin: auto;
      height: 30px;
-     padding: 0;
+     padding: 5px 0;
      text-align: center;
  }
+
+ footer i {
+     color: red;
+ }
+
+ footer h3 {
+     padding: 0;
+     margin: 0;
+ }
+
+
+ @media only screen 
+ and (min-width : 600px) {
+    .mobile_nav-div ul {
+        text-align: center;
+    } 
+
+    .main {
+        width: 92%;
+        height: 100%;
+        margin:  20px auto;
+    }
+
+    .heading {
+        font-size: 18px;
+    }
+
+    .list_view {
+        height: 400px;
+    }
+
+    .list_view-card {
+        height: 150px;
+        width: 20%;
+    }
+
+    .list_view-card a {
+        font-size: 18px;
+    }
+
+    .list_view-card i {
+        font-size: 40px;
+    }
+    
+    .form {
+        width: 50%;
+        max-width: 1000px;
+    }
+    
+ }
+ @media only screen 
+ and (min-width : 900px) {
+     .main {
+        width: 94%;
+        height: 100%;
+        margin:  20px auto;
+    }
+ }
+ 
