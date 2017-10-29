@@ -1,18 +1,23 @@
 extends layout
 
 block content
-  img.profile_photo(src=`/uploads/student/${student.photo || 'student.png'}`, alt="")
-  h2
-    a(href=`/students/${student.slug}`)= student.name
-  h4 Level
-  p= student.level
-  h4 Department
-  p= student.department
-  h4 Age
-  p= student.age
-  h4 Courses
-  if student.courses
-    ul
-      each course in student.courses
-        li
-          a(href=`/courses/${course}`)= course	
+  .background
+    img.display_picture(src=`/uploads/student/${student.photo || 'student.png'}`, alt="")
+    .student_info
+      h2= student.name
+      h4 
+        em Level:
+        |  #{student.level}
+      h4 
+        em Department: 
+        |  #{student.department}
+      h4 
+        em Age: 
+        |  #{student.age}
+      h4 Courses
+      if student.courses
+        ul
+          each course in student.courses
+            li
+              i(class='fa fa-hashtag')
+              a(href=`/courses/${course}`)= course	

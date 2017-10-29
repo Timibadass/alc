@@ -19,6 +19,6 @@ block content
       select(name="level")
         each level in levels
           option(value=level) #{level}
-    label(for="resource") Upload Resource
+    label(for="resource") Upload Resource (PDFs' Only)
     input(type="file" name='resource' id='resource' accept='application/pdf')
     input(type="submit" value='add')

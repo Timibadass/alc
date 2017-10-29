@@ -17,7 +17,7 @@ const multerOptions = {
 }
 
 exports.homePage = (req, res) => {
-    res.render('index', { title: 'Welcome to Andela Learning College'})
+    res.render('index', { title: 'Welcome to Your Resource Center!'})
 };
 
 

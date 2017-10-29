@@ -9,16 +9,18 @@ mixin studentForm( student = {})
         - const level = student.level || [] 
         ul
           each l in levels
-            input(type="radio" id=l value=l name='level' checked=(level.includes(l)))
-            label(for=l)= l
+            li.label
+              input(type="radio" id=l value=l name='level' checked=(level.includes(l)))
+              label(for=l)= l
         label(for="department") Department
         - const departmentalChoices = ['Physics', 'Computer Science', 'Mathematics', "Chemistry", 'Statistics']
         - const departments = student.department || []
         ul
           each department in departmentalChoices
-            input(type="radio" id=department value=department name='department' checked=(departments.includes(department)))
-            label(for=departmentalChoices)= department
-        label(for="number") number
+            li.label
+              input(type="radio" id=department value=department name='department' checked=(departments.includes(department)))
+              label(for=departmentalChoices)= department
+        label(for="number") Phone number
         input(type="text" name='number' value=student.number) 
         label(for="Age") Age
         input(type="text" name='age' value=student.age)
@@ -27,15 +29,17 @@ mixin studentForm( student = {})
         - const gender = student.gender || []
         ul
           each genderChoice in genderChoices
-            input(type="radio" value=genderChoice name='gender' checked=(gender.includes(genderChoice)))
-            label(for=genderChoice) #{genderChoice}
+            li.label
+              input(type="radio" value=genderChoice name='gender' checked=(gender.includes(genderChoice)))
+              label(for=genderChoice) #{genderChoice}
         label(for="courses") Courses
         - const choices = ['Mts 100', 'Mts 200', 'Mts 300','Mts 400','Mts 500','GNS 100', 'GNS 200', 'GNS 300', 'GNS 400','GNS 500', 'PHS 100', 'PHS 200', 'PHS 300', 'PHS 400', 'PHS 500','CHM 100', 'CHM 200', 'CHM 300', 'CHM 400', 'CHM 500']
         - const courses = student.courses || []
         ul
           each choice in choices
-            input(type="checkbox" id=choice value=choice name='courses' checked=(courses.includes(choice)))
-            label(for=choice) #{choice}
+            li.label
+              input(type="checkbox" id=choice value=choice name='courses' checked=(courses.includes(choice)))
+              label(for=choice) #{choice}
         label(for="photo") Photo
         input(type="file" name='photo' accept='image/png, image/jpeg')
         if student.photo

@@ -6,30 +6,55 @@ html
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Playfair+Display|Pontano+Sans")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     meta(name="viewport" content="width=device-width, initial-scale=1")
-  header.header
-    .title
-      a(href="/")
-        h2 #{h.siteName}
-    ul.nav
-      li.nav-list 
-        a(href="/") Home
-      li.nav-list
-        a(href="/add") Add students
-      li.nav-list
-        a(href="/addResource") Add Resource
-      li.nav-list
-        a(href="/departments") Departments
-      li.nav-list
-        a(href="/levels") Levels
-      if user
-        li.nav-list
-          a(href="/logout") Logout
-      else 
-        li.nav-list
-          a(href='/login') Log in
-        li.nav-list
-          a(href="/register") Register
   body
+    block header   header.top
+      nav.header
+        .title
+          a(href="/")
+            h2 #{h.siteName}
+        ul.nav
+          li.nav-list 
+            a(href="/") Home
+          li.nav-list
+            a(href="/add") Add students
+          li.nav-list
+            a(href="/addResource") Add Resource
+          li.nav-list
+            a(href="/departments") Departments
+          li.nav-list
+            a(href="/levels") Levels
+          if user
+            li.nav-list
+              a(href="/logout") Logout
+          else 
+            li.nav-list
+              a(href='/login') Log in
+            li.nav-list
+              a(href="/register") Register
+        button.mobile_nav-button
+          i(class= 'fa fa-navicon')
+        button.mobile_nav-button_close
+          i(class='fa fa-remove')
+      .mobile_nav-div
+        ul
+          li.mobile_nav-list 
+            a(href="/") Home
+          li.mobile_nav-list
+            a(href="/add") Add students
+          li.mobile_nav-list
+            a(href="/addResource") Add Resource
+          li.mobile_nav-list
+            a(href="/departments") Departments
+          li.mobile_nav-list
+            a(href="/levels") Levels
+          if user
+            li.mobile_nav-list
+              a(href="/logout") Logout
+          else 
+            li.mobile_nav-list
+              a(href='/login') Log in
+            li.mobile_nav-list
+              a(href="/register") Register
     block messages
       if locals.flashes
         - const categories = Object.keys(locals.flashes)
@@ -39,5 +64,11 @@ html
               p!= message
     block content
 
+  footer
+    block footer
+      h3 Made with 
+        i(class='fa fa-heart')  by Timi Omoyeni
+
     block scripts
-      script(src="/dist/App.bundle.js")
+      script(src="/javascripts/jquery.js")
+      script(src="/javascripts/script.js")
