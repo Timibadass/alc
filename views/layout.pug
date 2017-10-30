@@ -41,7 +41,7 @@ html(lang='en-us')
         - const categories = Object.keys(locals.flashes)
         each category in categories
           each message in flashes[category]
-            div(class=`flash_${category}`)
+            div(class=`flash-${category}`)
               button.flash_button-close
                 i(class='fa fa-close')
               p!= message

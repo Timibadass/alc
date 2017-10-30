@@ -248,24 +248,28 @@ a {
     font-weight: normal;
     background-color: transparent;
     color:#fff;
-};
+}
 
 /***SUCCESS ***/
-.flash_success {
-    background-color: #fff;
+.flash-success {
+    background-color: #F0EBEB;
     color: #000;
     height: auto;
     width: 98%;
     text-align: center;
-    border: 3px solid green;
+    position: relative;
+    border: 3px solid greenyellow;
     margin: 20px auto;
     padding: 0;
-    border-radius:20px;
-    position: relative;
+    border-radius: 	20px;
+}
+
+.flash-success i {
+    color: #000;
 }
 
 /******ERROR **********/
-.flash_error {
+.flash-error {
     background-color: #000;
     color: #fff;
     height: auto;
@@ -279,7 +283,7 @@ a {
 }
 
 /*********** WARNING **************/
-.flash_warning {
+.flash-warning {
     background-color: #000;
     color: #fff;
     height: auto;
@@ -293,7 +297,7 @@ a {
 }
 
 /************ INFO **********/
-.flash_info {
+.flash-info {
     background-color: #000;
     color: #fff;
     position: relative;
