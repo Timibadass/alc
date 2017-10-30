@@ -4,15 +4,14 @@ block content
   .heading
     h2= title
 
-  .main
-    ul.resources
-      each resource in resources
-        li.resources-grid
-          i(class='fa fa-file-pdf-o')
-          h3 Title: #{resource.title}
-          h3 Level: #{resource.level}
-          button.button
-            a(href=`/resources/view/${resource.slug}`) Open
-          button.button
-            a(href=`/resources/${resource.slug}/download`)
-              i(class='fa fa-download')
+  ul.resources
+    each resource in resources
+      li.resources-grid
+        i(class='fa fa-file-pdf-o')
+        h3 Title: #{resource.title}
+        h3 Level: #{resource.level}
+        button.button
+          a(href=`/resources/view/${resource.slug}`) Open
+        button.button
+          a(href=`/resources/${resource.slug}/download`)
+            i(class='fa fa-download')

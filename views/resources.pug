@@ -2,11 +2,10 @@ extends layout
 
 block content
   .heading
-    h2= title
-  .main 
-    ul.resources
-      each course in courses
-        li.resources-grid
-          a(href=`/resources/${course._id}`)= course._id
-          span ( #{course.count} Resources)
+    h2= title 
+  ul.resources
+    each course in courses
+      li.resources-grid
+        a(href=`/resources/${course._id}`)= course._id
+        span ( #{course.count} Resources)
   
