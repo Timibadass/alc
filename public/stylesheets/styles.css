@@ -151,6 +151,16 @@ text-align: center;
     margin: 20px auto auto auto;
 }
 
+/**********
+ ABOUT RESOURCE APP
+********************/
+.intro {
+    width: 90%;
+    text-align: center;
+    font-size: 18px;
+    margin: auto;
+}
+
 /**************
  LIST VIEW CONTAINER
 **********************/
@@ -175,7 +185,8 @@ text-align: center;
     margin: auto;
     box-shadow: 5px 10px 25px #3c3c3c;
     background-color: #f2EEe2;
-    height: 80px;
+    height: auto;
+    padding: 5px;
     border-radius: 20px;
 }
 
@@ -426,6 +437,17 @@ a {
       color: #000;
       height: 100%;
       text-align: center;
+}
+
+/************
+ REGISTER LINK ON LOGIN PAGE
+*********************************/
+.register_block {
+    text-align: center;
+    margin: 20px auto;
+    width: 90%;
+    text-decoration: underline;
+    color: #286DA8;
 }
 
 /**********
