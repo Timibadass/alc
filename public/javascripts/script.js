@@ -16,8 +16,8 @@ $(function(){
 
     /***********TO CLOSE TO FLASH MESSAGS */
 
-    $('.flash_button-close').click(() => {
-        $('.flash_button-close').parent().hide();
+    $('.flash_button-close').click(function() {
+        $(this).parent().hide();
     })
     
 });
