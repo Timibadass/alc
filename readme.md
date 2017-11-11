@@ -14,7 +14,7 @@
 </ul>
 
 <h3> Issues </h3>
-<ul>
-  <ol type='i'> Password reset works but postmarkapp and sendgrid require a valid work email address and website. </ol>
-  <ol> Images disappearing after 30mins-1hour of upload</ol>
-</ul>
+<ol type='i'>
+  <li> Password reset works but postmarkapp and sendgrid require a valid work email address and website. </li>
+  <li> Images disappearing after 30mins-1hour of upload</li>
+</ol>
