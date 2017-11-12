@@ -5,7 +5,7 @@ const uuid = require('uuid');
 const cloudinary = require('cloudinary');
 const cloudinaryStorage = require('multer-storage-cloudinary');
 const fs = require('fs');
-const fileName = `${uuid.v4()}.pdf`;
+const fileName = `${uuid.v4()}`;
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME, 
@@ -25,7 +25,7 @@ cloudinary.config({
       },
       filename(req, res, next) {
         next(null, fileName);
-        req.body.resource = fileName;      
+        req.body.resource = `${fileName}.pdf`;      
       }
   });
 
