@@ -14,7 +14,6 @@ mongoose.connection.on('error', (err) => {
 require('./models/Student');
 require('./models/Staff');
 require('./models/Resource');
-require('./config/cloudinary');
 
 // Start our app!
 const app = require('./app');

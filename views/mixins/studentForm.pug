@@ -43,5 +43,5 @@ mixin studentForm( student = {})
         label(for="photo") Photo
         input(type="file" name='photo' accept='image/png, image/jpeg')
         if student.photo
-            img.profile_photo(src=`/uploads/student/${student.photo}`, alt=student.name)
+            img.profile_photo(src=`http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1510506405/${student.photo}`, alt=student.name)
         input(type="submit" value='Save Student')

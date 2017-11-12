@@ -2,30 +2,34 @@ const mongoose = require('mongoose')
 const Resource = mongoose.model("Resource");
 const multer = require('multer');
 const uuid = require('uuid');
+const cloudinary = require('cloudinary');
+const cloudinaryStorage = require('multer-storage-cloudinary');
 const fs = require('fs');
+const fileName = `${uuid.v4()}.pdf`;
 
-const multerOptions = {
-    storage: multer.diskStorage({
-        destination: (req, file, next) => {
-            next(null, `public/uploads/`)
-        },
-       filename: (req, file, next) => {
-           const resourceName = `${uuid.v4()}.pdf`;
-           next(null, resourceName);
-           req.body.resource = resourceName;
-       }
-    }),
-    fileFilter(req, file, next) {
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME, 
+    api_key: process.env.API_KEY, 
+    api_secret: process.env.API_SECRET
+  });
+
+  const storage = cloudinaryStorage({
+      cloudinary: cloudinary,
+      fileFilter(req, file, next) {
         const isPdf = file.mimetype.startsWith('application/pdf');
         if(isPdf) {
             next(null, true);
         } else {
             next({message: 'That filetype isn\'t allowed!'}, false);
         }
-    }
-};
+      },
+      filename(req, res, next) {
+        next(null, fileName);
+        req.body.resource = fileName;      
+      }
+  });
 
-exports.upload = multer(multerOptions).single('resource');
+exports.upload = multer({ storage: storage }).single('resource');
 
 exports.resourceHomepage = async (req, res) => {
     const course = req.params.course;
@@ -55,7 +59,7 @@ exports.createResource = async (req, res) => {
 
 exports.viewResource = async (req, res) => {
     const resource = await Resource.findOne({slug: req.params.slug});
-    const pdf = `${__dirname}/../public/uploads/${resource.resource}`;
+    const pdf = `http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1510506405/${resource.resource}`;
     fs.readFile(pdf, (err, data) => {
         res.contentType('application/pdf'),
         res.send(data);
@@ -64,6 +68,6 @@ exports.viewResource = async (req, res) => {
 
 exports.downloadResource = async (req, res) => {
     const resource = await Resource.findOne({slug: req.params.slug})
-    const pdf = `${__dirname}/../public/uploads/${resource.resource}`;
+    const pdf = `http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1510506405/${resource.resource}`;
     res.download(pdf, `${resource.title}.pdf`);
 };

@@ -14,12 +14,12 @@ router.get('/add',
   studentController.addStudent);
 router.post('/add',
   studentController.upload,
-  catchErrors(studentController.resize),
+  studentController.addPhotoToReq,
   catchErrors(studentController.createStudent)
 );
 router.post('/add/:id', 
   studentController.upload,
-  catchErrors(studentController.resize),
+  studentController.addPhotoToReq,
   catchErrors(studentController.updateStudent)
 );
 

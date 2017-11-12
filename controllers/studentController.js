@@ -1,20 +1,31 @@
 const mongoose = require('mongoose');
 const Student = mongoose.model('Student');
 const multer = require('multer');
-const jimp = require('jimp');
 const uuid = require('uuid');
+const cloudinary = require('cloudinary');
+const cloudinaryStorage = require('multer-storage-cloudinary');
+const fileName = `${uuid.v4()}`; 
 
-const multerOptions = {
-    storage: multer.memoryStorage(),
-    fileFilter(req, file, next) {
+cloudinary.config({
+    cloud_name: process.env.CLOUD_NAME, 
+    api_key: process.env.API_KEY, 
+    api_secret: process.env.API_SECRET
+  });
+
+  const storage = cloudinaryStorage({
+      cloudinary: cloudinary,
+      fileFilter(req, file, next) {
         const isPhoto = file.mimetype.startsWith('image/');
         if(isPhoto) {
             next(null, true);
         } else {
             next({message: 'That filetype isn\'t allowed!'}, false);
         }
-    }
-}
+      },
+      filename(req, res, next) {
+        next(null, fileName)      
+      }
+  });
 
 exports.homePage = (req, res) => {
     res.render('index', { title: 'Welcome to Your Resource Center!'})
@@ -25,21 +36,14 @@ exports.addStudent = (req, res) => {
     res.render('editStudent', { title: 'Add Student'});
 }
 
-exports.upload = multer(multerOptions).single('photo');
+exports.upload = multer({storage: storage}).single('photo');
 
-exports.resize = async (req, res, next) => {
-    //check if there is no new file to resize
-    if(!req.file) {
-        next(); //skip to the next middleware
-        return;
-    }
+ exports.addPhotoToReq = (req, res, next) => {
     const extension = req.file.mimetype.split('/')[1];
-    req.body.photo = `${uuid.v4()}.${extension}`;
-    const photo = await jimp.read(req.file.buffer);
-    await photo.resize(800, jimp.AUTO);
-    await photo.write(`public/uploads/student/${req.body.photo}`);
+    req.body.photo = `${fileName}.${extension}`;
     next();
 }
+
 
 exports.createStudent = async (req, res) => {
     req.body.author = req.user._id;
