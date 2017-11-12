@@ -3,7 +3,7 @@ mixin studentCard( student= {})
     if user && student.author.equals(user._id)
       a(href=`/students/${student._id}/edit`)
         != h.icon('pencil')
-  img.profile_picture(src=`http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1510506405/${student.photo}`, alt="profile-photo")
+  img.profile_picture(src=`http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1/${student.photo}`, alt="profile-photo")
   h2
     a(href=`/students/${student.slug}`) #{student.name}
   if user && student.author.equals(user._id)

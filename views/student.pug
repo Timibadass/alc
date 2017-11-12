@@ -2,7 +2,7 @@ extends layout
 
 block content
   .background
-    img.display_picture(src=`http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1510506405/${student.photo}`, alt="profile-photo")
+    img.display_picture(src=`http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1/${student.photo}`, alt="profile-photo")
     .student_info
       h2= student.name
       h4 

@@ -59,7 +59,7 @@ exports.createResource = async (req, res) => {
 
 exports.viewResource = async (req, res) => {
     const resource = await Resource.findOne({slug: req.params.slug});
-    const pdf = `http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1510506405/${resource.resource}`;
+    const pdf = `http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1/${resource.resource}`;
     fs.readFile(pdf, (err, data) => {
         res.contentType('application/pdf'),
         res.send(data);
@@ -68,6 +68,6 @@ exports.viewResource = async (req, res) => {
 
 exports.downloadResource = async (req, res) => {
     const resource = await Resource.findOne({slug: req.params.slug})
-    const pdf = `http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1510506405/${resource.resource}`;
+    const pdf = `http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1/${resource.resource}`;
     res.download(pdf, `${resource.title}.pdf`);
 };
