@@ -5,7 +5,7 @@ const validator = require('validator');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
 const passportLocalMongoose = require('passport-local-mongoose');
 
-const staffSchema = new Schema({
+const userSchema = new Schema({
     email: {
         type: String,
         unique: true,
@@ -23,7 +23,7 @@ const staffSchema = new Schema({
     resetPasswordExpires: Date
 });
 
-staffSchema.plugin(passportLocalMongoose, {usernameField: 'email'});
-staffSchema.plugin(mongodbErrorHandler);
+userSchema.plugin(passportLocalMongoose, {usernameField: 'email'});
+userSchema.plugin(mongodbErrorHandler);
 
-module.exports = mongoose.model('Staff', staffSchema);
+module.exports = mongoose.model('User', userSchema);

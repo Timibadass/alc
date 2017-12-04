@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const studentController = require('../controllers/studentController');
-const staffController = require('../controllers/staffController');
+const userController = require('../controllers/userController');
 const resourceController = require('../controllers/ResourceController');
 const authController = require('../controllers/authController');
 const { catchErrors} = require('../handlers/errorHandlers');
@@ -48,16 +48,16 @@ router.get('/levels/:level', catchErrors(studentController.displaySudentsInLevel
 router.get('/departments', catchErrors(studentController.getStudentsByDepartment));
 router.get('/departments/:department', catchErrors(studentController.displaySudentsInDepartment));
 
-router.get('/login', staffController.loginForm);
+router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
-router.get('/register', staffController.registerForm);
+router.get('/register', userController.registerForm);
 
 //1. we need to validate the registration data
 //2. register the user
 //3. we need to log them in
 router.post('/register', 
-  staffController.validateRegister,
-  staffController.register,
+  userController.validateRegister,
+  userController.register,
   authController.login
 );
 

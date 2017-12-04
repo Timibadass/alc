@@ -1,7 +1,7 @@
 const passport = require('passport');
 const crypto =require('crypto');
 const mongoose = require('mongoose');
-const Staff = mongoose.model('Staff');
+const User = mongoose.model('User');
 const promisify = require('es6-promisify');
 const mail = require('../handlers/mail');
 
@@ -30,19 +30,19 @@ exports.isLoggedIn = (req, res, next) => {
 
 exports.forgot = async (req, res) => {
     //1. check if a user with that email exists
-    const staff = await Staff.findOne({email: req.body.email});
-    if(!staff) {
+    const user = await User.findOne({email: req.body.email});
+    if(!user) {
         req.flash('error', "No account with that email exists!");
         return res.redirect('/login')
     }
     //2. set reset tokens and expiry on their account
-    staff.resetPasswordToken = crypto.randomBytes(20).toString('hex');
-    staff.resetPasswordExpires = Date.now() + 900000 // 15 minutes from now
-    await staff.save();
+    user.resetPasswordToken = crypto.randomBytes(20).toString('hex');
+    user.resetPasswordExpires = Date.now() + 900000 // 15 minutes from now
+    await user.save();
     //3. Send them an email withthe token
-    const resetURL = `http://${req.headers.host}/forgot-password/${staff.resetPasswordToken}`;
+    const resetURL = `http://${req.headers.host}/forgot-password/${user.resetPasswordToken}`;
     mail.send({
-        staff,
+        user,
         filename: 'password-reset',
         subject: 'Password Reset',
         resetURL
@@ -53,11 +53,11 @@ exports.forgot = async (req, res) => {
 };
 
 exports.reset = async (req, res) => {
-    const staff = await Staff.findOne({
+    const user = await User.findOne({
         resetPasswordToken: req.params.token,
         resetPasswordExpires: {$gt: Date.now()}
     });
-    if (!staff) {
+    if (!user) {
         req.flash('error','Password token is invalid or has expired');
         return res.redirect('/login');
     }
@@ -75,21 +75,21 @@ exports.confirmedPasswords = (req, res, next) => {
 }
 
 exports.update = async (req, res) => {
-    const staff = await Staff.findOne({
+    const user = await User.findOne({
         resetPasswordToken: req.params.token,
         resetPasswordExpires: {$gt: Date.now()}
     });
-    if (!staff) {
+    if (!user) {
         req.flash('error','Password token is invalid or has expired');
         return res.redirect('/login');
     }
 
-    const setPassword = promisify(staff.setPassword, staff);
+    const setPassword = promisify(user.setPassword, user);
     await setPassword(req.body.password);
-    staff.resetPasswordToken = undefined;
-    staff.resetPasswordExpires = undefined;
-    const updatedStaff = await staff.save();
-    await req.login(updatedStaff);
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpires = undefined;
+    const updatedUser = await user.save();
+    await req.login(updatedUser);
     req.flash('success', 'Password reset successful!');
     res.redirect('/');
 };

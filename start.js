@@ -12,7 +12,7 @@ mongoose.connection.on('error', (err) => {
 
 // READY?! Let's go!
 require('./models/Student');
-require('./models/Staff');
+require('./models/User');
 require('./models/Resource');
 
 // Start our app!

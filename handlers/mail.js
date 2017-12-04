@@ -26,7 +26,7 @@ exports.send = async (options) => {
     
     const mailOptions = {
         from: `Timi Omoyeni <noreply@timiomoyeni.com>`,
-        to: options.staff.email,
+        to: options.user.email,
         subject: options.subject,
         html,
         text

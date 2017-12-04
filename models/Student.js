@@ -37,7 +37,7 @@ const studentSchema = new mongoose.Schema({
     photo: String,
     author: {
         type: mongoose.Schema.ObjectId,
-        ref: 'Staff',
+        ref: 'User',
         required: 'You must supply an author'
     }
 });
