@@ -6,6 +6,7 @@ const cloudinary = require('cloudinary');
 const cloudinaryStorage = require('multer-storage-cloudinary');
 const fs = require('fs');
 const fileName = `${uuid.v4()}`;
+const http = require('http');
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME, 
@@ -59,10 +60,9 @@ exports.createResource = async (req, res) => {
 
 exports.viewResource = async (req, res) => {
     const resource = await Resource.findOne({slug: req.params.slug});
-    const pdf = `http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1/${resource.resource}.pdf`;
-    fs.readFileSync(pdf,'utf8', (err, data) => {
-        res.contentType('application/pdf'),
-        res.send(data);
+    const pdf = fs.createWriteStream('file.pdf');
+    http.get(`http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1/${resource.resource}.pdf`, res => {
+        res.pipe(pdf);
     });
 };
 
