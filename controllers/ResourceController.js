@@ -68,6 +68,6 @@ exports.viewResource = async (req, res) => {
 
 exports.downloadResource = async (req, res) => {
     const resource = await Resource.findOne({slug: req.params.slug})
-    const pdf = `http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1/${resource.resource}`;
+    const pdf = `http://res.cloudinary.com/student-to-herokuapp-com/image/upload/v1/${resource.resource}pdf`;
     res.download(pdf, `${resource.title}.pdf`);
 };
